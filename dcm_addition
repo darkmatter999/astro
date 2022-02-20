@@ -1,0 +1,11 @@
+All the following Euler angle sets are 3-2-1 Euler angles.  The BBB frame relative to NNN is given through the 3-2-1 EAs (10,20,30) degrees, while RRR relative to NNN is given by the EAs (-5,5,5) degrees.  What is the attitude of BBB relative to RRR in terms of the 3-2-1 EAs.
+
+Algorithm:
+1. Convert Euler Angles to DCMs
+2. Multiply the resulting DCMs to get the final 3-2-1 DCMs (BN and RN)
+3. With these two resulting DCMs, subtract to get BR
+4. From BR, extract the resulting 3-2-1 Euler Angles
+
+
+
+
