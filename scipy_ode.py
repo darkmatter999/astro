@@ -195,9 +195,11 @@ def mrp_integrate(sigma0, t_end):
         #Now, the big difference with the MRP is that we get one of two possible attitude sets - one describing
         #a short (preferred) rotation, the other the long way around (usually not preferred). The module
         #'mrp_conversion.py' converts the respective long/short MRP sets.
+        #We also want to avoid +/-360° singularities which we can do by below switching mechanism
         #For the integration, we'd want the updated attitude after a given period using short rotations.
         #So if our resulting sigma is a long rotation, we simply use above mentioned module to convert it into
         #the short rotation form (sigma's norm < 1 --> short rotation vs norm > 1 --> long rotation)
+        #Note that this if statement could also be put at the top of the integration loop.
         if np.linalg.norm(sigma) > 1:
             sigma = convert_mrp(sigma)
     return np.linalg.norm(sigma)

@@ -18,7 +18,7 @@ def cayley_mrp_to_dcm(sigma):
 #do the Cayley Transform
 
 def cayley_dcm_to_mrp(C):
-    W = sqrtm(C)
+    W = sqrtm(C) #W actually is a 'half rotation', i.e. W multiplied with itself gives us C, hence the full rotation
     S = np.matmul(np.eye(3)-W, np.linalg.inv(np.eye(3)+W)) 
     #extract the sigma (MRP) vector from the skew-symmetric matrix S
     S_flattened = np.ndarray.flatten(S) #prior to extraction, for easier indexing, first flatten S
