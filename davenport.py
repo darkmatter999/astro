@@ -33,6 +33,8 @@ from quat_to_dcm import quat_to_dcm
 #Now, what then is the appropriate quaternion attitude description? To find this, we need to take the
 #Eigensystem (eigenvalues and eigenvectors) of the 4x4 matrix K. The correct description 
 #is then the eigenvector associated with the **largest** eigenvalue of the 4 resulting eigenvalues.
+#It turns out that the aforementioned cost function maximization G is simply that largest eigenvalue,
+#hence our solution.
 #It is however important to choose the 'right' quaternion set since eigenvectors are not unique. 
 #Numpy (and MATLAB, Octave, for that matter) will give us one of two valid eigenvectors.
 #We cannot influence which. We need to choose the positive eigenvector in order to choose the 'short rotation' 
@@ -69,7 +71,7 @@ def davenport_attitude(m_b, m_n, weights):
     largest_eigenvalue_idx = np.ndarray.tolist(eigensystem[0]).index(max(eigensystem[0]))
     #Extract the resulting quaternion attitude representation which is the eigenvector associated with the
     #largest eigenvalue of K
-    BN_quat = eigensystem[1][largest_eigenvalue_idx]
+    BN_quat = eigensystem[1][:,largest_eigenvalue_idx]
     #Convert the resulting quaternion set to DCM format
     BN = quat_to_dcm(BN_quat)
 
@@ -80,10 +82,9 @@ b = [np.array([0.8273, 0.5541, -0.0920]), np.array([-0.8285, 0.5522, -0.0955])]
 n = [np.array([-0.1517, -0.9669, 0.2050]), np.array([-0.8393, 0.4494, -0.3044])]
 w = [1,1]
 
-
 print (davenport_attitude(b, n, w))
 
-#print (np.outer(b[0], n[0]) + np.outer(b[1], n[1]))
+
 
 
 

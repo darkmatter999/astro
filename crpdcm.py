@@ -9,7 +9,7 @@ def crptodcm(q):
     [2*((q[1]*q[0])-q[2]), 1-np.square(q[0])+np.square(q[1])-np.square(q[2]), 2*((q[1]*q[2])+q[0])],
     [2*((q[2]*q[0])+q[1]), 2*((q[2]*q[1])-q[0]), 1-np.square(q[0])-np.square(q[1])+np.square(q[2])]]))
 
-print (crptodcm(np.array([0.1, 0.2, 0.3])))
+#print (crptodcm(np.array([0.1, 0.2, 0.3])))
 
 #CRP-->DCM conversion using the Cayley Transform Method --> returns the same DCM transformation as above
 #classical method
@@ -27,7 +27,7 @@ def cayley_crptodcm(q):
     C = np.matmul(np.eye(3)-Q, np.linalg.inv(np.eye(3)+Q)) 
     return C
 
-print (cayley_crptodcm(np.array([0.1, 0.2, 0.3])))
+#print (cayley_crptodcm(np.array([0.1, 0.2, 0.3])))
 
 
 

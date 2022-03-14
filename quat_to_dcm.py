@@ -13,4 +13,4 @@ def quat_to_dcm(beta):
 
     return C
 
-#print (quat_to_dcm(np.array([0.235702, 0.471405, -0.471405, 0.707107])))
+#print (quat_to_dcm(np.array([ 0.11335196, -0.83314496,  0.50296458, -0.20011858])))
