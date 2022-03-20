@@ -27,5 +27,5 @@ def cayley_dcm_to_mrp(C):
     return sigma
 
 #regarding CC19
-res = np.matmul(cayley_mrp_to_dcm(np.array([-0.1, 0.3, 0.1])), cayley_mrp_to_dcm(np.array([0.1, 0.2, 0.3])))
-print (cayley_dcm_to_mrp(res))
+#res = np.matmul(cayley_mrp_to_dcm(np.array([-0.1, 0.3, 0.1])), cayley_mrp_to_dcm(np.array([0.1, 0.2, 0.3])))
+#print (cayley_dcm_to_mrp(res))
